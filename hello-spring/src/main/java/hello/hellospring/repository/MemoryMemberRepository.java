@@ -6,7 +6,7 @@ import java.util.*;
 
 public class MemoryMemberRepository implements MemberRepository{
     private static Map<Long, Member> store = new HashMap<>();
-    private static long sequence = 0L; //0,1,2 key 값을 생성해줌
+    private static long sequence = 0L; //key 값을 생성
 
 
     @Override
@@ -23,7 +23,7 @@ public class MemoryMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findByName(String name) {
-        store.values().stream()
+        return store.values().stream()
                 .filter(member -> member.getName().equals(name))
                 .findAny();
     }
@@ -33,4 +33,7 @@ public class MemoryMemberRepository implements MemberRepository{
         return new ArrayList<>(store.values());
     }
 
+    public void clearStore(){
+        store.clear();
+    }
 }
