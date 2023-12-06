@@ -28,7 +28,7 @@ public class MemberService {
         return member.getId();
     }
 
-    private void validateDuplicateMember(Member member) { //메소트 리펙토링 진행
+    private void validateDuplicateMember(Member member) { //메소드 리펙토링 진행
         memberRepository.findByName(member.getName())
              .ifPresent(m->{
                  throw new IllegalStateException("이미 존재하는 회원입니다.");
